@@ -26,7 +26,7 @@ proxy on Xtream code (client API)
 
 support live, vod, series and full epg :rocket:
 
-### M3u Example
+### M3u Examples
 
 Original iptv m3u file
 
