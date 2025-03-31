@@ -21,5 +21,5 @@ archives:
 release:
   github:
     owner: MatAnzPL
-    name: iptv-proxy
+    name: iptv-proxy-yagoor
   draft: false
