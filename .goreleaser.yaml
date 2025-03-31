@@ -9,12 +9,8 @@ builds:
       - -a
     goos:
       - windows
-      - darwin
-      - linux
-
     goarch:
       - amd64
-      - arm64
 
 archives:
   -
@@ -24,60 +20,6 @@ archives:
 
 release:
   github:
-    owner: yagoor
+    owner: MatAnzPL
     name: iptv-proxy
   draft: false
-
-nfpms:
-  -
-   vendor: Yago Fontoura do Rosário
-   homepage: https://github.com/yagoor/iptv-proxy
-   maintainer: Yago Fontoura do Rosário <6549332+Yagoor@users.noreply.github.com>
-   description: Reverse proxy on iptv m3u file
-   license: Apache 2.0
-   formats:
-     - deb
-     - rpm
-
-dockers:
-  - image_templates:
-    - "yagoor/iptv-proxy:{{ .Tag }}-arm64"
-    - "yagoor/iptv-proxy:v{{ .Major }}-arm64"
-    - "yagoor/iptv-proxy:v{{ .Major }}.{{ .Minor }}-arm64"
-    - "yagoor/iptv-proxy:latest-arm64"
-    use: buildx
-    goos: linux
-    goarch: arm64
-    ids:
-    - iptv-proxy
-    build_flag_templates:
-    - "--platform=linux/arm64/v8"
-    - "--label=org.opencontainers.image.created={{.Date}}"
-    - "--label=org.opencontainers.image.name={{.ProjectName}}"
-    - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-    - "--label=org.opencontainers.image.version={{.Version}}"
-    skip_push: false
-    dockerfile: .Dockerfile.goreleaser
-
-  - image_templates:
-    - "yagoor/iptv-proxy:{{ .Tag }}-amd64"
-    - "yagoor/iptv-proxy:v{{ .Major }}-amd64"
-    - "yagoor/iptv-proxy:v{{ .Major }}.{{ .Minor }}-amd64"
-    - "yagoor/iptv-proxy:latest-amd64"
-    - "yagoor/iptv-proxy:{{ .Tag }}"
-    - "yagoor/iptv-proxy:v{{ .Major }}"
-    - "yagoor/iptv-proxy:v{{ .Major }}.{{ .Minor }}"
-    - "yagoor/iptv-proxy:latest"
-    use: buildx
-    goos: linux
-    goarch: amd64
-    ids:
-    - iptv-proxy
-    build_flag_templates:
-    - "--platform=linux/amd64"
-    - "--label=org.opencontainers.image.created={{.Date}}"
-    - "--label=org.opencontainers.image.name={{.ProjectName}}"
-    - "--label=org.opencontainers.image.revision={{.FullCommit}}"
-    - "--label=org.opencontainers.image.version={{.Version}}"
-    skip_push: false
-    dockerfile: .Dockerfile.goreleaser
